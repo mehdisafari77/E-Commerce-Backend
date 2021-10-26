@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
       }
     ]
   }).then(response => {
-    res.json(response)
+    res.status(200).json(response)
   })
   .catch(err => {
     res.status(400).json(err)
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
       }
     ]
   }).then(response => {
-    res.json(response)
+    res.status(200).json(response)
   })
   .catch(err => {
     res.status(400).json(err)
