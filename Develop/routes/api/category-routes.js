@@ -10,8 +10,6 @@ router.get('/', (req, res) => {
   }).then(response => {
     res.json(response)
   })
-
-  // be sure to include its associated Products
   .catch(err => {
     res.json(err)
   }) 
@@ -19,7 +17,17 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
-  // be sure to include its associated Products
+  Category.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [Product]
+  }).then(response => {
+    res.json(response)
+  })
+  .catch(err => {
+    res.json(err)
+  }) 
 });
 
 router.post('/', (req, res) => {
